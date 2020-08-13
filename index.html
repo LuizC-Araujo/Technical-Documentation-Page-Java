@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Java - Documentation</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+</head>
+<body>
+    <nav id="navbar">
+        <header>Documentação Java</header>
+        <ul>
+          <li><a class="nav-link" href="#Java_Language_Changes">Java Language Changes</a></li>
+          <li>
+            <a class="nav-link" href="#Changes_for_Java_SE_14">Changes for Java SE 14</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#Changes_for_Java_SE_13">Changes for Java SE 13</a>
+          </li>
+          <li><a class="nav-link" href="#Changes_for_Java_SE_12">Changes for Java SE 12</a></li>
+          <li><a class="nav-link" href="#Changes_for_Java_SE_11">Changes for Java SE 11</a></li>
+          <li>
+            <a class="nav-link" href="#Changes_for_Java_SE_10">Changes for Java SE 10</a>
+          </li>
+          <li><a class="nav-link" href="#Changes_for_Java_SE_9">Changes for Java SE 9</a></li>
+          <li><a class="nav-link" href="#Preview">Preview</a></li>
+          <li><a class="nav-link" href="#Using_Preview_Features">Using Preview Features</a></li>
+          <li><a class="nav-link" href="#Pattern_Matching_for_the_instanceof_Operator">Pattern Matching for the instanceof Operator</a></li>
+        </ul>
+      </nav>
+      <main id="main-doc">
+        <section class="main-section" id="Java_Language_Changes">
+          <header>Java Language Changes</header>
+          <article>
+            <p>This section summarizes the updated language features in Java SE 9 and subsequent releases.</p>
+          </article>
+        </section>
+        <section class="main-section" id="Changes_for_Java_SE_14">
+          <header>Changes for Java SE 14</header>
+          <article>
+            <p>Java SE 14 introduces pattern matching for the instanceof operator; if the result of the instanceof operator is true, then the object being tested is automatically assigned to a variable that you previously declared. See Pattern Matching for the instanceof Operator. This release also introduces records, which are a new kind of type declaration that's ideal for "plain data carriers," classes that contain data not meant to be altered and only the most fundamental methods such as constructors and accessors. See Records. Text blocks accept two more escape sequences (see Programmer's Guide to Text Blocks), and Switch Expressions is now a permanent language feature.</p>
+        </article>
+        </section>
+        <section class="main-section" id="Changes_for_Java_SE_13">
+            <header>Changes for Java SE 13</header>
+            <article>
+              <p>Java SE 13 introduces text blocks, which are multiline string literals that don't require common escape sequences; see Programmer's Guide to Text Blocks. It also introduces one change to switch expressions: To specify their value, use the new yield statement instead of the break statement; see Switch Expressions in Java Platform, Standard Edition Java Language Updates, Release 13.</p>
+          </article>
+          </section>
+          <section class="main-section" id="Changes_for_Java_SE_12">
+            <header>Changes for Java SE 12</header>
+            <article>
+              <p>ava SE 12 introduces switch expressions, plus a new kind of case label that prevents fall through. This is available as a preview feature. See Switch Expressions in Java Platform, Standard Edition Java Language Updates, Release 12.</p>
+          </article>
+          </section>
+          <section class="main-section" id="Changes_for_Java_SE_11">
+            <header>Changes for Java SE 11</header>
+            <article>
+              <p>Java SE 11 lets you declare formal parameters of implicitly typed lambda expressions with the var identifier; see Local Variable Type Inference.</p>
+          </article>
+          </section>
+          <section class="main-section" id="Changes_for_Java_SE_10">
+            <header>Changes for Java SE 10</header>
+            <article>
+              <p>Java SE 10 introduces support for inferring the type of local variables from the context, which makes code more readable and reduces the amount of required boilerplate code.</p>
+          </article>
+          </section>
+          <section class="main-section" id="Changes_for_Java_SE_9">
+            <header>Changes for Java SE 9</header>
+            <article>
+              <p>The major change to Java Platform, Standard Edition (Java SE) 9 is the introduction of the Java Platform module system.
+
+                The Java Platform module system introduces a new kind of Java programing component, the module, which is a named, self-describing collection of code and data. Its code is organized as a set of packages containing types, i.e., Java classes and interfaces; its data includes resources and other kinds of static information. Modules can either export or encapsulate packages, and they express dependencies on other modules explicitly.
+                
+                To learn more about the Java Platform module system, see Project Jigsaw on OpenJDK.
+                
+                Apart from the new module system, a few changes have been made to the Java language; see More Concise try-with-resources Statements and Small Language Changes in Java SE 9.</p>
+          </article>
+          </section>
+
+          <section class="main-section" id="Preview">
+            <header>Preview</header>
+            <article>
+              <p>A preview feature is a new feature whose design, specification, and implementation are complete, but which is not permanent, which means that the feature may exist in a different form or not at all in future JDK releases.
+
+                Introducing a feature as a preview feature in a mainline JDK release enables the largest developer audience possible to try the feature out in the real world and provide feedback. In addition, tool vendors are encouraged to build support for the feature before Java developers use it in production. Developer feedback helps determine whether the feature has any design mistakes, which includes hard technical errors (such as a flaw in the type system), soft usability problems (such as a surprising interaction with an older feature), or poor architectural choices (such as one that forecloses on directions for future features). Through this feedback, the feature's strengths and weaknesses are evaluated to determine if the feature has a long-term role in the Java SE Platform, and if so, whether it needs refinement. Consequently, the feature may be granted final and permanent status (with or without refinements), or undergo a further preview period (with or without refinements), or else be removed.
+                
+                Every preview feature is described by a JDK Enhancement Proposal (JEP) that defines its scope and sketches its design. For example, JEP 325 describes the JDK 12 preview feature for switch expressions. For background information about the role and lifecycle of preview features, see JEP 12.</p>
+          </article>
+          </section>
+          <section class="main-section" id="Using_Preview_Features">
+            <header>Using Preview Features</header>
+            <article>
+              <p>To use preview language features in your programs, you must explicitly enable them in the compiler and the runtime system. If not, you'll receive an error message that states that your code is using a preview feature and preview features are disabled by default.
+
+                To compile source code with javac that uses preview features from JDK release n, use javac from JDK release n with the --enable-preview command-line option in conjunction with either the --release n or -source n command-line option.
+                
+                For example, suppose you have an application named MyApp.java that uses the JDK 12 preview language feature switch expressions. Compile this with JDK 12 as follows:
+                
+                Copyjavac --enable-preview --release 12 MyApp.java</p>          
+            </article>
+          </section>
+          <section class="main-section" id="Pattern_Matching_for_the_instanceof_Operator">
+            <header>Pattern Matching for the instanceof Operator</header>
+            <article>
+              <p>Pattern matching involves testing whether an object has a particular structure, then extracting data from that object if there's a match. You can already do this with Java; however, pattern matching introduces new language enhancements that enable you to conditionally extract data from objects with code that's more concise and robust.
+
+                More specifically, JDK 14 extends the instanceof operator: you can specify a binding variable; if the result of the instanceof operator is true, then the object being tested is assigned to the binding variable.</p> 
+            <p>Consider the following code the calculates the perimeter of certain shapes:</p>
+            <code>
+                public interface Shape { }
+
+final class Rectangle implements Shape {
+    final double length;
+    final double width;
+    
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+    
+    double length() { return length; }
+    double width() { return width; }
+}
+
+public class Circle implements Shape {
+    final double radius;
+    
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+    
+    double radius() { return radius; }
+}
+
+    public static double getPerimeter(Shape shape) throws IllegalArgumentException {
+        if (shape instanceof Rectangle) {
+            Rectangle s = (Rectangle) shape;
+            return 2 * s.length() + 2 * s.width();
+        } else if (shape instanceof Circle) {
+            Circle s = (Circle) shape;
+            return 2 * s.radius() * Math.PI;
+        } else {
+            throw new IllegalArgumentException("Unrecognized shape");
+        }
+    }
+            </code>       
+            </article>
+          </section>
+      </main>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
