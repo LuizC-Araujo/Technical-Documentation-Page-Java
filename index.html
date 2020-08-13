@@ -27,6 +27,7 @@
           <li><a class="nav-link" href="#Preview">Preview</a></li>
           <li><a class="nav-link" href="#Using_Preview_Features">Using Preview Features</a></li>
           <li><a class="nav-link" href="#Pattern_Matching_for_the_instanceof_Operator">Pattern Matching for the instanceof Operator</a></li>
+          <li><a class="nav-link" href="#Records">Records</a></li>
         </ul>
       </nav>
       <main id="main-doc">
@@ -148,6 +149,95 @@ public class Circle implements Shape {
             </code>       
             </article>
           </section>
+        </section>
+        <section class="main-section" id="Records">
+          <header>Records</header>
+          <article>
+            <p>JDK 14 introduces records, which are a new kind of type declaration. Like an enum, a record is a restricted form of a class. It’s ideal for "plain data carriers," classes that contain data not meant to be altered and only the most fundamental methods such as constructors and accessors.</p> 
+            <P>Consider the following class definition:</P>
+            <code>
+              final class Rectangle implements Shape {
+                final double length;
+                final double width;
+                
+                public Rectangle(double length, double width) {
+                    this.length = length;
+                    this.width = width;
+                }
+                
+                double length() { return length; }
+                double width() { return width; }
+            }
+            </code>
+            <p>It has the following characteristics:</p>
+            <ul>
+              <li>All of its members are declared final</li>
+              <li>Its only methods consist of a constructor, Rectangle(double length, double width) and two accessors, length() and width()</li>
+            </ul>
+              
+            <p>You can represent this class with a record:</p>
+            <code>
+              record Rectangle(float length, float width) { }
+            </code>
+            <p>A record consists of a name (in this example, it's Rectangle) and a list of the record's components (which in this example are float length and float width).
+
+              A record acquires these members automatically:</p>
+            <ul>
+              <li>A private <code>final</code> field for each of its components</li>
+              <li>A public read accessor method for each component with the same name and type of the component; in this example, these methods are <code>Rectangle::length() and Rectangle::width()</code></li>
+              <li>A public constructor whose signature is derived from the record components list. The constructor initializes each private field from the corresponding argument.</li>
+              <li>Implementations of the <code>equals()</code> and <code>hashCode()</code> methods, which specify that two records are equal if they are of the same type and their corresponding record components are equal</li>
+              <li>An implementation of the <code>toString()</code> method that includes the string representation of all the record's components, with their names</li>
+            </ul>
+          </article>
+        </section>
+
+        <!-- <section class="main-section" id="#Compact_Constructors">
+          <header>Compact Constructors</header>
+          <article>
+           <p>If you want your record's constructor to do more than initialize its private fields, you can define a custom constructor for the record. However, unlike a class constructor, a record constructor doesn't have a formal parameter list; this is called a compact constructor.
+
+            For example, the following record, HelloWorld, has one field, message. Its custom constructor calls Objects.requireNonNull(message), which specifies that if the message field is initialized with a null value, then a NullPointerException is thrown. (Custom record constructors still initialize their record's private fields.)</p>
+          <code>
+            record HelloWorld(String message) {
+              public HelloWorld {
+                  java.util.Objects.requireNonNull(message);
+              }
+          }
+          </code>
+          </article>
+        </section>
+        <section class="main-section" id="#Restrictions_on_Records">
+          <header>Restrictions on Records</header>
+          <article>
+           <p>The following are restrictions on the use of records:</p>
+           <ul>
+             <li>Records cannot extend any class</li>
+             <li>Records cannot declare instance fields (other than the private final fields that correspond to the components of the record component list); any other declared fields must be static</li>
+             <li>Records cannot be abstract; they are implicitly final</li>
+             <li>The components of a record are implicitly final</li>
+           </ul>
+           <p>Beyond these restrictions, records behave like regular classes:</p>
+           <ul>
+             <li>You can declare them inside a class; nested records are implicitly static</li>
+             <li>You can create generic records</li>
+             <li>Records can implement interfaces</li>
+             <li>You instantiate records with the new keyword</li>
+             <li>You can declare in a record's body static methods, static fields, static initializers, constructors, instance methods, and nested types</li>
+             <li>You can annotate records and a record's individual components</li>
+           </ul>
+          </article>
+        </section>
+        <section class="main-section" id="#APIs_Related_to_Records">
+          <header>APIs Related to Records</header>
+          <article>
+           <p>The class java.lang.Class has two new methods related to records:</p>
+           <ul>
+             <li>RecordComponent[] getRecordComponents(): Returns an array of java.lang.reflect.RecordComponent objects, which correspond to the record's components.</li>
+             <li>boolean isRecord(): Similar to isEnum() except that it returns true if the class was declared as a record.</li>
+           </ul>
+          </article>
+        </section> -->
       </main>
     <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </body>
